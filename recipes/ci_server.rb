@@ -122,7 +122,7 @@ template File.join(gitlabci['path'], "config", "database.yml") do
   group gitlabci['group']
   variables({
     :user => gitlabci['user'],
-    :password => gitlabci['database_password']
+    :password => gitlabci['database_password'],
     :mysql_host => mysql['server_host']
   })
 end
