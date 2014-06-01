@@ -10,12 +10,15 @@ gitlabci = node['gitlabci']
 gitlabci = Chef::Mixin::DeepMerge.merge(gitlabci,gitlabci[gitlabci['env']])
 
 # database
-include_recipe "mysql::server"
+unless gitlab['external_database']
+  include_recipe "mysql::server"
+end
+
 include_recipe "database::mysql"
 
 mysql_connexion = {
-  :host => 'localhost',
-  :username => 'root',
+  :host => mysql['server_host'],
+  :username => mysql['server_root_username'],
   :password => mysql['server_root_password']
 }
 
@@ -37,7 +40,7 @@ gitlabci['environments'].each do |environment|
     connection mysql_connexion
     password gitlabci['database_password']
     database_name "gitlab_ci_#{environment}"
-    host 'localhost'
+    host mysql['server_host']
     privileges ["SELECT", "UPDATE", "INSERT", "DELETE", "CREATE", "DROP", "INDEX", "ALTER", "LOCK TABLES"]
     action :grant
   end

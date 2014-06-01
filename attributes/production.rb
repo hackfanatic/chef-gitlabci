@@ -2,6 +2,7 @@
 default['gitlabci']['production']['user'] = "gitlab_ci"
 default['gitlabci']['production']['group'] = "gitlab_ci"
 default['gitlabci']['production']['home'] = "/home/gitlab_ci"
+default['gitlabci']['external_database'] = false
 
 # git
 default['gitlabci']['production']['revision'] = "4-0-stable"
