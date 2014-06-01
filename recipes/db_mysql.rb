@@ -10,7 +10,7 @@ gitlabci = node['gitlabci']
 gitlabci = Chef::Mixin::DeepMerge.merge(gitlabci,gitlabci[gitlabci['env']])
 
 # database
-unless gitlab['external_database']
+unless gitlabci['external_database']
   include_recipe "mysql::server"
 end
 
