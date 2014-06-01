@@ -4,6 +4,7 @@
 #
 
 gitlabci = node['gitlabci']
+mysql = node['mysql']
 
 # merge environmental variables
 gitlabci = Chef::Mixin::DeepMerge.merge(gitlabci,gitlabci[gitlabci['env']])
@@ -41,6 +42,9 @@ template File.join(gitlabci['path'], 'config', 'application.yml') do
   variables({
     :server => gitlabci['gitlab']['server'],
     :https => gitlabci['gitlab']['ssl'],
+    :host => gitlabci['gitlab']['host'],
+    :port => gitlabci['gitlab']['port'],
+    :email_from => gitlabci['gitlab']['email_from']
   })
 end
 
@@ -119,6 +123,7 @@ template File.join(gitlabci['path'], "config", "database.yml") do
   variables({
     :user => gitlabci['user'],
     :password => gitlabci['database_password']
+    :mysql_host => mysql['server_host']
   })
 end
 
