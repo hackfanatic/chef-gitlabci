@@ -42,9 +42,9 @@ template File.join(gitlabci['path'], 'config', 'application.yml') do
   variables({
     :server => gitlabci['gitlab']['server'],
     :https => gitlabci['gitlab']['ssl'],
-    :host => gitlabci['gitlab']['host'],
-    :port => gitlabci['gitlab']['port'],
-    :email_from => gitlabci['gitlab']['email_from']
+    :host => gitlabci['host'],
+    :port => gitlabci['port'],
+    :email_from => gitlabci['email_from']
   })
 end
 
