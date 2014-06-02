@@ -8,16 +8,16 @@ defaults: &defaults
   ## Gitlab CI settings  
   gitlab_ci:
     ## Web server settings
-    host: <%= host %>
-    port: <%= port %>
-    https: <%= https %>
+    host: <%= @host %>
+    port: <%= @port %>
+    https: <%=@https %>
 
     ## Email settings
     # Email address used in the "From" field in mails sent by GitLab-CI
-    email_from: <%= email_from %>
+    email_from: <%= @email_from %>
   
     # Email address of your support contact (default: same as email_from)
-    support_email: <%= email_from %>
+    support_email: <%= @email_from %>
   
     # Default project notifications settings: 
     #
