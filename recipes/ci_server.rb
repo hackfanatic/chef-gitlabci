@@ -49,8 +49,8 @@ template File.join(gitlabci['path'], 'config', 'application.yml') do
 end
 
 # gitlab puma config
-template File.join(gitlabci['path'], 'config', 'puma.rb') do
-  source "puma.rb.erb"
+template File.join(gitlabci['path'], 'config', 'unicorn.rb') do
+  source "unicorn.rb.erb"
   user gitlabci['user']
   group gitlabci['group']
   variables({
